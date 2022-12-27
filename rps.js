@@ -1,49 +1,55 @@
 const choices = ["rock", "paper", "scissors"];
 
+
 let getComputerChoice =() =>{
-    computerSelection = choices[ Math.floor((Math.random() *choices.length))]; 
-    console.log( "here is computer's choice: " + computerSelection);
+    computerSelection = choices[ Math.floor((Math.random() *choices.length))];
     return computerSelection; 
-}
-
-
-const getPlayerChoice = () => {
-    playerSelection= lowerCaseChoice();
-    choiceIncludes= choices.includes(playerSelection);
-        while(choiceIncludes === true){
-            console.log("here is player Choice: " + playerSelection);
-            return playerSelection;
-        }
-         if(choiceIncludes === false)
-            getPlayerChoice();        
-       
 }
 
 const lowerCaseChoice = () => {
     playerChoice=prompt("Enter: rock, paper or scissors");
-    if (playerChoice === null || playerChoice === ''){
+    if (playerChoice === null || playerChoice=== ' ' ){
         alert("You did not enter a choice");
         lowerCaseChoice(); 
     } else {
         playerChoice= playerChoice.toLowerCase();
         return playerChoice;  
+        
       }
 }
 
-let playRound = (playerSelection, computerSelection) => {
-    playerSelection=getPlayerChoice();
-    computerSelection=getComputerChoice();
+const getPlayerChoice = () => {
+    playerSelection= lowerCaseChoice();
+    choiceIncludes= choices.includes(playerSelection);
+        if(choiceIncludes === false){ 
+            getPlayerChoice(); 
+        }
+         else return playerSelection;
+}
 
-    if (playerSelection === computerSelection){
-        console.log("it's a tie");
+let playRound = (playerSelection,computerSelection) => {
+    
+    if (playerSelection === computerSelection){ console.log("ahh! chose same ting!");
+        return;
     } else if ( playerSelection === "rock" && computerSelection === "scissors" ||
-                playerSelection === "scissor" && computerSelection === paper ||
-                playerSelection === "paper" && computerSelection === "scissors"){
-                    console.log("player beat computer");
-    } else console.log("computer wins");
+        playerSelection === "scissors" && computerSelection === "paper" ||
+        playerSelection === "paper" && computerSelection === "rock"){ console.log  (`You win! ${playerSelection} beats ${computerSelection}`);
+            return playerSelection++; 
+       
+ } else { console.log(`You lose! ${computerSelection} beats ${playerSelection}`);return computerSelection++;}
+    
 }
-playRound(); 
 
-const chooseWinner =() => {
-
+const game =() => {
+    for(let i =0; i<5; i++){
+        playerS=getPlayerChoice();
+        computerS=getComputerChoice(); 
+        playRound(playerS, computerS);
+    }
+        if(playerSelection>computerSelection){
+            return `Player Wins!`;}
+        else if (playerSelection<computerSelection){
+            return `Computer Wins!`;}
+        else return "Its a tie lol";
 }
+console.log(game());
