@@ -29,27 +29,36 @@ const getPlayerChoice = () => {
 
 let playRound = (playerSelection,computerSelection) => {
     
-    if (playerSelection === computerSelection){ console.log("ahh! chose same ting!");
-        return;
+    if (playerSelection == computerSelection){
+        console.log("ahh! chose same ting!");
+        return;           
     } else if ( playerSelection === "rock" && computerSelection === "scissors" ||
         playerSelection === "scissors" && computerSelection === "paper" ||
-        playerSelection === "paper" && computerSelection === "rock"){ console.log  (`You win! ${playerSelection} beats ${computerSelection}`);
-            return playerSelection++; 
-       
- } else { console.log(`You lose! ${computerSelection} beats ${playerSelection}`);return computerSelection++;}
-    
+        playerSelection === "paper" && computerSelection === "rock"){ 
+        console.log  (`You win! ${playerSelection} beats ${computerSelection}`);
+        return playerSelection;    
+    } else { 
+        console.log(`You lose! ${playerSelection} loses to ${computerSelection}`); 
+        return computerSelection;}
 }
 
 const game =() => {
+    playerScore = 0;
+    computerScore = 0;
     for(let i =0; i<5; i++){
         playerS=getPlayerChoice();
         computerS=getComputerChoice(); 
-        playRound(playerS, computerS);
+        compare =playRound(playerS, computerS) ;
+    
+        if (compare == playerSelection)
+        playerScore++;
+        else if(compare== computerSelection)
+        computerScore++; 
     }
-        if(playerSelection>computerSelection){
-            return `Player Wins!`;}
-        else if (playerSelection<computerSelection){
-            return `Computer Wins!`;}
-        else return "Its a tie lol";
+    if(playerScore>computerScore)
+        return `Player Wins!`;
+    else if (playerScore<computerScore)
+        return `Computer Wins!`;
+    else return "Its a tie lol";
 }
-console.log(game());
+    
