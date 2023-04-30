@@ -1,0 +1,10 @@
+add an if statement to compare player and computer
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch rps-ui
+# Changes to be committed:
+#	modified:   index.html
+#	modified:   rps.js
+#	modified:   style.css
+#

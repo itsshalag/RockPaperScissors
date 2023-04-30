@@ -1,64 +1,117 @@
-const choices = ["rock", "paper", "scissors"];
+pScore = 0; 
+cScore = 0;
+tie = 0; 
 
+//UI. When play is clicked make R.P.S buttons appear
+const startGame= () => {
+    intro = document.querySelector('.intro');
+    playBtn = document.querySelector(".playBtn");
+    match = document.querySelector('.match');
 
-let getComputerChoice =() =>{
-    computerSelection = choices[ Math.floor((Math.random() *choices.length))];
-    return computerSelection; 
+    playBtn.addEventListener('click', e => {
+    match.classList.add("fadeIn");
+    playBtn.style.display= 'none';
+    });
 }
 
-const lowerCaseChoice = () => {
-    playerChoice=prompt("Enter: rock, paper or scissors");
-    if (playerChoice === null || playerChoice=== ' ' ){
-        alert("You did not enter a choice");
-        lowerCaseChoice(); 
-    } else {
-        playerChoice= playerChoice.toLowerCase();
-        return playerChoice;  
-        
-      }
-}
 
-const getPlayerChoice = () => {
-    playerSelection= lowerCaseChoice();
-    choiceIncludes= choices.includes(playerSelection);
-        if(choiceIncludes === false){ 
-            getPlayerChoice(); 
-        }
-         else return playerSelection;
-}
+//When "rock", "paper", or "scissors" is clicked generate random
+//option for computer selection then compare to see who wins
+const playGame= () => {
+    button = document.querySelectorAll('.buttons button');
+    choices= ["rock", "paper", "scissors"];
+    choiceDisplay = document.querySelector('.matchContainer');
+    playerDisplay = document.querySelector('.playerDisplay');
 
-let playRound = (playerSelection,computerSelection) => {
-    
-    if (playerSelection == computerSelection){
-        console.log("ahh! chose same ting!");
-        return;           
+    button.forEach(button => {
+        button.addEventListener('click', function(e) {
+
+            //generate random computerSelection
+            computerSelection = choices[ Math.floor((Math.random() *choices.length))];
+            
+            //display computer and player selection on UI
+            playerSelection = this.textContent;
+            playerDisplay.textContent = " "+ ` Player: ${playerSelection}`;
+            choiceDisplay.textContent = ` Computer: ${computerSelection } ` + " ";         
+            
+            compareSelection(playerSelection, computerSelection);
+        });
+    }); 
+}    
+
+const compareSelection = ( playerSelection, computerSelection) => {
+    //compare player and computer choice
+    if (playerSelection === computerSelection){
+    tie++;
+    game();
+    return;
     } else if ( playerSelection === "rock" && computerSelection === "scissors" ||
-        playerSelection === "scissors" && computerSelection === "paper" ||
-        playerSelection === "paper" && computerSelection === "rock"){ 
-        console.log  (`You win! ${playerSelection} beats ${computerSelection}`);
-        return playerSelection;    
-    } else { 
-        console.log(`You lose! ${playerSelection} loses to ${computerSelection}`); 
-        return computerSelection;}
+    playerSelection === "scissors" && computerSelection === "paper" ||
+    playerSelection === "paper" && computerSelection === "rock" ){ 
+    pScore++;
+    game();
+    return;  
+    } else {
+    cScore++;
+    game();
+    return; 
+    }
+    
+}   
+const game = () => {
+
+    playerScore = document.querySelector('.playerScore');
+    computerScore = document.querySelector('.computerScore');
+    tieScore = document.querySelector('.tieScore');
+    resetBtn = document.querySelector('.resetBtn');
+    rpsBtns = document.querySelector('.buttons');
+    displayHolder = document.querySelector('.displayHolder');
+    theWinner = document.querySelector('.theWinner');
+    winSection = document.querySelector('.winSection');
+    resetContainer = document.querySelector('.resetContainer');
+    intro =document.querySelector('.intro');
+
+    playerScore.textContent = pScore; 
+    computerScore.textContent = cScore;
+    tieScore.textContent = tie; 
+
+    count= pScore +cScore +tie; 
+
+    
+    if(count === 5){
+        //disable R.P.S buttons and make 'reset' button clickable. Present winner add trophy img
+        rpsBtns.style.display = 'none';
+        displayHolder.style.display = 'none';
+        
+        
+        if( pScore > cScore){
+            //add .winSection to display winner
+            winSection.classList.add('fadeIn');
+           
+            theWinner.textContent = ("player");
+        }
+        else if( cScore > pScore ){
+            //add .winSection to display winner
+            winSection.classList.add('fadeIn');
+            
+            theWinner.textContent = ("computer");
+        }
+        else {
+            //add .winSection to display winner
+           
+            winSection.style.display = 'none';
+
+            
+        } 
+        //Add reset Button
+        resetBtn.classList.add('fadeIn');
+        resetBtn.addEventListener('click', (e) => {
+            intro.reset();
+        });
+    
+    }
+
 }
 
-const game =() => {
-    playerScore = 0;
-    computerScore = 0;
-    for(let i =0; i<5; i++){
-        playerS=getPlayerChoice();
-        computerS=getComputerChoice(); 
-        compare =playRound(playerS, computerS) ;
-    
-        if (compare == playerSelection)
-        playerScore++;
-        else if(compare== computerSelection)
-        computerScore++; 
-    }
-    if(playerScore>computerScore)
-        return `Player Wins!`;
-    else if (playerScore<computerScore)
-        return `Computer Wins!`;
-    else return "Its a tie lol";
-}
-    
+startGame();
+playGame();

@@ -1,0 +1,117 @@
+body{
+    background-color: #844141;
+}
+
+.intro, .buttons{
+    text-align: center;
+
+}
+div.fadeOut{
+    opacity: 0;
+    
+}
+
+div.fadeIn, .resetBtn.fadeIn, .theWinner.fadeIn, .winSection.fadeIn{
+    opacity: 1;
+}
+
+.match, .resetBtn{
+    opacity: 0%;
+    transition: .5s ease;
+
+}
+
+.score-list, .score-list2, .winSection, .resetContainer{
+    font-size: 20px;        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+
+}
+.computerTitle, .playerTitle, .tieTitle, .winnerTitle{
+    margin: 10px;
+    font-size: 30px;
+}
+
+.winnerTitle{
+    font-size: 40px;
+}
+
+.playBtn, .resetBtn{
+    font-size: 70px;
+    font-family: "Time New Roman", times, serif;
+    background-color: #4c586b;
+    border-radius: 5px;
+    padding: 12px; 
+    transition-duration: 1s; 
+    
+}
+
+
+/* .reset{
+    font-size: 70px;
+    font-family: "Time New Roman", times, serif;
+    background-color: #4c586b;
+    border-radius: 5px;
+    padding: 12px; 
+    transition-duration: 1s; 
+    opacity: 10;
+
+} */
+.matchContainer, .playerDisplay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px
+    
+}
+
+.displayHolder{
+    display: flex;
+    justify-content: center;
+}
+
+.rockBtn, .paperBtn, .scissorsBtn{
+    font-size: 50px;
+    background-color:#555d5f;
+    margin: 15px;
+    border-radius: 5px;
+    font-family: "Time New Roman", times, serif;
+    
+}
+
+.rockBtn:hover, .paperBtn:hover, .scissorsBtn:hover, .playBtn:hover, .resetBtn:hover{
+    background-color: #3c3e3f;
+    transition: .7s;
+}
+
+.title{
+    font-size: 45px;
+}
+.titleStatement{
+    font-size: 30px;
+}
+
+span{
+    font-size: 25px;
+}
+
+.theWinner{
+    font-size: 53px;
+    margin: 13px;
+     
+}
+.winSection{
+    opacity: 0%;
+    
+}
+
+
+img{
+    margin: 10px;
+    width: 45px;
+    height: 50px;
+    
+}
+

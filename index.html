@@ -4,16 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
-    <script src="rps.js"></script>
+    <script src="rps.js" defer="defer"></script>
 </head>
 <body>
-<button></button>
-<button></button>
-<button></button>
+<div id="container">
+    <div class="intro">
+        <h1 class="title">Rock Paper Scissors</h1>
+        <h2 class="titleStatement">Challenge the computer five rounds of R.P.S to see who wins!</h2>
+        <!--once this is pressed the screen will transition to everything below -->
+        <button class="playBtn">Play!!</button> 
+    </div>  
 
+    <div class="match">
+          
+        <div class="buttons">
+            <button class="rockBtn">rock</button>
+            <button class="paperBtn">paper</button>
+            <button class="scissorsBtn">scissors</button>
+        </div>
 
-    
+        <div class="displayHolder">
+            <div class="playerDisplay"></div>
+            <div class="matchContainer"></div>
+            
+        </div>
+        <div class="score-list">
+            <p class="playerTitle">Player Score: </p>
+                <span class="playerScore">0</span>
+            <p class="computerTitle">Computer Score:</p>
+                <span class="computerScore">0</span>
+            
+        </div>    
+            <div class="score-list2">
+                <p class="tieTitle">Tie: </p>
+                <span class="tieScore">0</span>
+            </div>
+        
+        <div class="winSection">
+        <h3 class="winnerTitle">Winner: </h3>
+            <span class="theWinner">?</span>
+            <img src="/trophy.png" alt="trophy image">
+        </div>
+        <div class="resetContainer">
+            <button class="resetBtn">Play Again!</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
