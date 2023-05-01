@@ -105,13 +105,25 @@ const game = () => {
         } 
         //Add reset Button
         resetBtn.classList.add('fadeIn');
-        resetBtn.addEventListener('click', (e) => {
-            intro.reset();
+        resetBtn.addEventListener('click', e => {
+            playerScore.textContent = computerScore.textContent = tieScore.textContent = pScore = cScore = tie = 0;
+            match.classList.remove('fadeIn');
+            winSection.classList.remove('fadeIn');
+            resetBtn.classList.remove('fadeIn');
+            playBtn.style.display = '';
+            rpsBtns.style.display = '';
+            displayHolder.style.display = '';
+            playerDisplay.textContent = choiceDisplay.textContent = '';   
+            game();
+           
+           
         });
     
     }
 
 }
+
+
 
 startGame();
 playGame();
